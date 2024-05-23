@@ -168,6 +168,34 @@ object module1hw {
       aux(this)
     }*/
 
+
+   def flatMap[B](f: T => IterableOnce[B]) :List2[B] = {
+      var h: ::[B] = null
+      var t: ::[B] = null
+      val n = scala.collection.immutable.Nil
+      def aux(xs: List2[T]): List2[B] = xs match {
+        case Nil => List2[B]()
+        case (x :: xs1) => {
+          xs.map(x => {
+            val it = f(x).iterator
+            while (it.hasNext) {
+              var nx = new::(it.next(), Nil)
+              if (t eq null) {
+                h = nx
+              } else {
+                t.tail = nx
+              }
+              t = nx
+            }
+
+            if (h eq null) n.tail else {releaseFence(); h.head}
+          })
+        }
+      }
+      aux(this)
+    }
+
+
    /**
      *
      * Реализовать метод filter для списка который будет фильтровать список по некому условию
@@ -219,7 +247,7 @@ object module1hw {
       }
 
 
-  case class ::[T](head: T, tail: List2[T]) extends List2[T]
+  case class ::[T](head: T, var tail: List2[T]) extends List2[T]
 
   case object Nil extends List2[Nothing]
 
@@ -243,6 +271,8 @@ object module1hw {
 
   }
 }
+
+
 
 
 

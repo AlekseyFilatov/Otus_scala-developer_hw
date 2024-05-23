@@ -247,7 +247,7 @@ object module1hw {
       }
 
 
-  case class ::[T](head: T, tail: List2[T]) extends List2[T]
+  case class ::[T](head: T, var tail: List2[T]) extends List2[T]
 
   case object Nil extends List2[Nothing]
 

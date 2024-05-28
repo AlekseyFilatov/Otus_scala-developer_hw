@@ -228,6 +228,18 @@ object module1hw {
     def ::[TT >: T](el: TT): List2[TT] = new ::(el, this)
 
 
+    def :::[TT >: T](that: List2[TT]): List2[TT] = {
+      @tailrec
+      def rlRec(result: List2[TT], list: List2[TT]): List2[TT] = {
+        list match {
+          case Nil => result
+          case (x :: xs) => rlRec( result .::(x), xs)
+          case _ => result
+        }
+      }
+      rlRec(this, that)
+    }
+
     /**
      *
      * Реализовать метод reverse который позволит заменить порядок элементов в списке на противоположный
@@ -285,7 +297,7 @@ object module1hw {
     }*/
 
    
-   def flatMap[B](f: T => IterableOnce[B]) :List2[B] = {
+   /*def flatMap[B](f: T => IterableOnce[B]) :List2[B] = {
       var h: ::[B] = null
       var t: ::[B] = null
       val n = scala.collection.immutable.Nil
@@ -309,6 +321,11 @@ object module1hw {
         }
       }
       aux(this)
+    }*/
+
+    def flatMap[B](f: T => List2[B]): List2[B] = this match {
+      case ::(head, tail) => f(head) ::: tail.flatMap(f)
+      case Nil => Nil
     }
 
 
@@ -387,6 +404,7 @@ object module1hw {
 
   }
 }
+
 
 
 

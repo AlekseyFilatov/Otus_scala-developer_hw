@@ -76,7 +76,7 @@ object homework_hkt_implicits {
     fa match {
       case _ :List[A] => Bindable.tupleBindable(fa.asInstanceOf[List[A]], fb.asInstanceOf[List[B]]).asInstanceOf[F[(A, B)]]
       case _ :Option[A] => Bindable.tupleBindable(fa.asInstanceOf[Option[A]], fb.asInstanceOf[Option[B]]).asInstanceOf[F[(A, B)]]
-      case _ :Bindable[F, A] => Bindable.tupleFBindable(fa.asInstanceOf[Bindable[F, A]], fb.asInstanceOf[Bindable[F, B]]).asInstanceOf[F[(A, B)]]
+      case _ :Bindable[F, A] => Bindable.tupleBindable(fa.asInstanceOf[Bindable[F, A]], fb.asInstanceOf[Bindable[F, B]]).asInstanceOf[F[(A, B)]]
 
     }
   }

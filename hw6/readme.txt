@@ -34,3 +34,4 @@ class ParserWithGivenParam(using splitter: String):
 • наличие конструкций scala3
 
 • монадический парсер действительно должен работать
+

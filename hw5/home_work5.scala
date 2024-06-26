@@ -54,11 +54,8 @@ object homework_hkt_implicits {
       implBindList
     }
 
-    def tupleFBindable[F[_], A, B](fa: Option[F[A]], fb: Option[F[B]]): F[(A, B)] = {
-      fa match {
-        //case _ :Option[Bindable[F, A]] => Bindable.tupleBindable(fa, fb).asInstanceOf[F[(A, B)]]
-        case _ :Option[F[A]] => Bindable.tupleFnc(fa, fb).asInstanceOf[F[(A, B)]]
-      }
+    def tupleFBindable[F[_], A, B](fa: Option[Bindable[F, A]], fb: Option[Bindable[F, B]]): F[(A, B)] = {
+      Bindable.tupleFnc(fa.get, fb.get).asInstanceOf[F[(A, B)]]
     }
 
     def tupleBindable[F[_], A, B](fa: Bindable[F, A], fb: Bindable[F, B]): F[(A, B)] = {
@@ -79,7 +76,8 @@ object homework_hkt_implicits {
     fa match {
       case _ :List[A] => Bindable.tupleBindable(fa.asInstanceOf[List[A]], fb.asInstanceOf[List[B]]).asInstanceOf[F[(A, B)]]
       case _ :Option[A] => Bindable.tupleBindable(fa.asInstanceOf[Option[A]], fb.asInstanceOf[Option[B]]).asInstanceOf[F[(A, B)]]
-      case _ :Option[F[A]] => Bindable.tupleFBindable(Bindable.OptToOpt(fa), Bindable.OptToOpt(fb))
+      case _ :Bindable[F, A] => Bindable.tupleBindable(fa.asInstanceOf[Bindable[F, A]], fb.asInstanceOf[Bindable[F, B]]).asInstanceOf[F[(A, B)]]
+
     }
   }
 
@@ -126,8 +124,13 @@ object Module {
     println(r4)
     lazy val r5: List[(Int, Int)] = tuplef(list1,list2)
     println(r5)
+    println(tuplef(optBindable(optA), optBindable(optB)))
   }
 
 
 }
+
+
+
+
 

@@ -24,21 +24,21 @@ package object zio_homework {
 
 
 
-  lazy val guessProgram = for {
+  lazy val guessProgram: ZIO[Console with Random, Throwable, Boolean] = for {
     rand <- zio.random.nextIntBetween(1,3)
     _ <- zio.console.putStrLn(s"Check random number: $rand")
     v <- zio.console.getStrLn.map(str => str.toInt)
     _ <- zio.ZIO.when(rand != v)(ZIO.fail(new Exception(s"$v is not an $rand!")))
-    _ <- zio.console.putStrLn("Success!")
-  } yield  v
+    _ <- zio.console.putStrLn("Success!").orDie
+  } yield  (rand != v)
 
   /**
    * 2. реализовать функцию doWhile (общего назначения), которая будет выполнять эффект до тех пор, пока его значение в условии не даст true
    *
    */
 
-  def doWhile = zio.console.putStrLn("Retry!").retryWhile(_ => scala.util.Random.nextBoolean())
-
+  def doWhile(): ZIO[Console with Random, Throwable, Boolean]= guessProgram.orElse( ZIO.effect(println("Некорректный ввод, пробуйте еще")) zipRight doWhile)
+  // def doWhile = zio.console.putStrLn("Retry!").retryWhile(_ => scala.util.Random.nextBoolean())
   /**
    * 3. Реализовать метод, который безопасно прочитает конфиг из файла, а в случае ошибки вернет дефолтный конфиг
    * и выведет его в консоль

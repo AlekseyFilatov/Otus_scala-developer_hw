@@ -39,6 +39,15 @@ package object zio_homework {
 
   def doWhile(): ZIO[Console with Random, Throwable, Boolean]= guessProgram.orElse( ZIO.effect(println("Некорректный ввод, пробуйте еще")) zipRight doWhile)
   // def doWhile = zio.console.putStrLn("Retry!").retryWhile(_ => scala.util.Random.nextBoolean())
+
+  def doWhile2[R, E, A](
+                        body: ZIO[R, E, A]
+                      )(condition: A => Boolean): ZIO[R, E, A] =
+    body.flatMap { a =>
+      if (condition(a)) ZIO.succeed(a)
+      else doWhile2(body)(condition)
+    }
+
   /**
    * 3. Реализовать метод, который безопасно прочитает конфиг из файла, а в случае ошибки вернет дефолтный конфиг
    * и выведет его в консоль

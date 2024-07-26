@@ -15,3 +15,4 @@ object WalletMain extends IOApp.Simple {
     } yield ()
 
 }
+

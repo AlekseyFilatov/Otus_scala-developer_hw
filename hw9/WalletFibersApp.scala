@@ -54,3 +54,4 @@ object WalletFibersApp extends IOApp.Simple {
     } yield ()
 
 }
+

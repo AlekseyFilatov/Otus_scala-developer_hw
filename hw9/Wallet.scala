@@ -100,3 +100,4 @@ object Wallet {
       .attempt
       .map(_.leftMap(_ => BalanceTooLow).void)
 }
+

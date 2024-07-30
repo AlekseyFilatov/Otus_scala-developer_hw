@@ -79,3 +79,4 @@ object WalletTransferApp extends IOApp.Simple {
   }
 
 }
+

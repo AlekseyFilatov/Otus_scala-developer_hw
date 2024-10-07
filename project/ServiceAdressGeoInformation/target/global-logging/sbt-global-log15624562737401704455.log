@@ -1,0 +1,108 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\AlexFil\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\AlexFil\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.10.1 (Eclipse Adoptium Java 17.0.9)
+[debug] Load.defaultLoad until apply took 134.5135ms
+[debug]           Load.loadUnit: plugins took 132.1446ms
+[debug]           Load.loadUnit: defsScala took 0.3334ms
+[debug] [Loading] Scanning directory C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation\project
+[debug]             Load.loadUnit: mkEval took 10.9677ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 17.785 ms
+[info] loading settings for project serviceadressgeoinformation-build from idea.sbt ...
+[debug]               Load.resolveProject(serviceadressgeoinformation-build) took 48.0243ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id serviceadressgeoinformation-build, base: C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation\project, plugins: List(<none>))) took 83.0629ms
+[debug] [Loading] Done in C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation\project, returning: (serviceadressgeoinformation-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 588.0802ms
+[debug]           Load.loadUnit: cleanEvalClasses took 9.0989ms
+[debug]         Load.loadUnit(file:/C:/Users/AlexFil/IdeaProjects/ServiceAdressGeoInformation/project/, ...) took 735.9391ms
+[debug]       Load.apply: load took 874.948ms
+[debug]       Load.apply: resolveProjects took 6.2405ms
+[debug]       Load.apply: finalTransforms took 57.7976ms
+[debug]       Load.apply: config.delegates took 6.5879ms
+[debug]       Load.apply: Def.make(settings)... took 421.2587ms
+[debug]       Load.apply: structureIndex took 120.7601ms
+[debug]       Load.apply: mkStreams took 2.6232ms
+[info] loading project definition from C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 5285.4242ms
+[debug]     Load.loadUnit: defsScala took 0.0054ms
+[debug] [Loading] Scanning directory C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation
+[debug]       Load.loadUnit: mkEval took 0.8962ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin)))
+[debug] Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 5.3716 ms
+[info] loading settings for project serviceadressgeoinformation from build.sbt ...
+[debug]         Load.resolveProject(serviceadressgeoinformation) took 67.2027ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id serviceadressgeoinformation, base: C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation, plugins: List(<none>))) took 75.0502ms
+[debug] [Loading] Done in C:\Users\AlexFil\IdeaProjects\ServiceAdressGeoInformation, returning: (serviceadressgeoinformation)
+[debug]     Load.loadUnit: loadedProjectsRaw took 9035.183ms
+[debug]     Load.loadUnit: cleanEvalClasses took 107.5247ms
+[debug]   Load.loadUnit(file:/C:/Users/AlexFil/IdeaProjects/ServiceAdressGeoInformation/, ...) took 14430.8944ms
+[debug] Load.apply: load took 14459.0842ms
+[debug] Load.apply: resolveProjects took 0.2099ms
+[debug] Load.apply: finalTransforms took 49.3221ms
+[debug] Load.apply: config.delegates took 0.6867ms
+[debug] Load.apply: Def.make(settings)... took 120.4582ms
+[debug] Load.apply: structureIndex took 46.7881ms
+[debug] Load.apply: mkStreams took 0.2092ms
+[info] set current project to ServiceAdressGeoInformation (in build file:/C:/Users/AlexFil/IdeaProjects/ServiceAdressGeoInformation/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(; set ideaPort in Global := 55078 ; idea-shell, None, None)
+[debug] > Exec(set ideaPort in Global := 55078, None, None)
+[info] Defining Global / ideaPort
+[info] The new value will be used by Compile / compile, Test / compile
+[debug] Defining 
+[debug] 	Global / ideaPort
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Compile / compile
+[debug] 	Test / compile
+[info] Reapplying settings...
+[info] set current project to ServiceAdressGeoInformation (in build file:/C:/Users/AlexFil/IdeaProjects/ServiceAdressGeoInformation/)
+[debug] > Exec(idea-shell, None, None)

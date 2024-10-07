@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="sbt 1" modules="KafkaZIOConsumer,KafkaZIOProducer,serviceadressgeoinformation_3491,serviceadressgeoinformation_4553,untitled,untitled_8256" />
+    <profile name="sbt 2" modules="ServiceAdressGeoInformation">
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <parameters>
+        <parameter value="-Ymacro-annotations" />
+      </parameters>
+    </profile>
+  </component>
+</project>

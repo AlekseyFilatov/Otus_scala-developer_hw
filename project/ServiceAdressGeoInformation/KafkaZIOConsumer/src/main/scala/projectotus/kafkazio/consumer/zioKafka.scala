@@ -77,7 +77,7 @@ object zioKafka extends ZIOAppDefault {
         ConsumerSettings(consumer.bootstrapServers)
           .withGroupId(consumer.groupId)
           .withClientId("client")
-          .withCloseTimeout(30.seconds)
+          .withCloseTimeout(10.seconds)
           .withPollTimeout(10.millis)
           .withProperty("enable.auto.commit", "false")
           .withProperty("auto.offset.reset", "earliest")

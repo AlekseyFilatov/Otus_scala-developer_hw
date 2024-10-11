@@ -8,6 +8,8 @@ import zio.kafka.serde._
 import zio.logging.backend._
 import zio.stream._
 
+import java.nio.file.Paths
+
 object ProducerApp extends ZIOAppDefault {
   override val bootstrap: ZLayer[ZIOAppArgs, Nothing, Unit] =
     Runtime.setConfigProvider(ConfigProvider.fromResourcePath()) >>> Runtime.removeDefaultLoggers >>> SLF4J.slf4j
@@ -15,32 +17,19 @@ object ProducerApp extends ZIOAppDefault {
   override val run =
     (for {
       topic <- ZIO.config(AppConfigProducer.config.map(_.topic))
-      _ <- ZStream
-        .fromIteratorScoped(
-          {
-            val it = ZIO.fromAutoCloseable(
+      filecsv <- ZIO.config(AppConfigProducer.config.map(_.filecsv))
+      workingDir <- ZIO.succeed(Paths.get(".").toAbsolutePath.toString.replace(".", ""))
+      _ <- ZStream.fromIteratorScoped {
+          ZIO.fromAutoCloseable(
               ZIO.attemptBlocking(
-                scala.io.Source.fromFile(s"${EventGenerator.workingDir}transactionRaw.csv")
-                )
+                scala.io.Source.fromFile(s"${workingDir}${filecsv}")
+              )
             ).map(_.getLines)
-            //it.map(x => x.map(x => EventGenerator.parser.parse(x)))
-            /*for {
-              tr <- it.mapAttempt(x => x.map(x => TransactionRaw(x.split(";", -1)(0).toLong, x.split(";", -1)(1).toString, BigDecimal(x.split(";", -1)(2))))).foldZIO(error => ZIO.die(new Throwable(s"Local :${error}")), result => ZIO.succeed(result))
-          } yield tr*/
-           for {
-              iter <- it.mapAttempt(x => x.map(x => TransactionRaw(x.split(";", -1)(0).toLong, x.split(";", -1)(1).toString, BigDecimal(x.split(";", -1)(2)))))
-                .logError("parse error")
-                .mapError(e => new Throwable(e.getMessage.toString))
-                .catchAll(e => ZIO.none)
-            } yield iter.iterator
-
-           /*for {
-              transactionRaw <- it.flatMap(x => {
-                EventGenerator.parserTransactionRaw(x)
-              })
-            } yield TransactionRaw(transactionRaw.userId, transactionRaw.country, transactionRaw.amount)*/
-          }
-        )
+            .flatMap(tr => ZIO.logInfo("Parse lines...") *>
+              DataTransformation.EventGenerator.parserTransactionRaw(tr))
+            .logError("parse error")
+            .mapError(e => new Throwable(e.getMessage.toString))
+        }
         .mapZIO { transaction =>
           (ZIO.logInfo("Producing transaction to Kafka...") *>
             Producer.produce(
@@ -58,7 +47,7 @@ object ProducerApp extends ZIOAppDefault {
     } yield ()).provide(
       producerSettingsProduce,
       Producer.live,
-      EventGenerator.live
+      DataTransformation.EventGenerator.live
     )
 
   private lazy val producerSettingsProduce =

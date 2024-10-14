@@ -1,11 +1,11 @@
-ThisBuild / scalaVersion     := "2.13.14"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.example"
-ThisBuild / organizationName := "example"
-
+val zioVersion = "2.0.21"
 lazy val root = (project in file("."))
   .settings(
     name := "KafkaZIOProducer",
+    version := "1.0",
+    organization := "alekseyfilatov",
+    scalaVersion := "2.13.14",
+    scalacOptions ++= Seq("-Ymacro-annotations", "-deprecation", "-unchecked"),
     libraryDependencies += "org.slf4j" % "slf4j-api" % "2.0.12",
     libraryDependencies += "org.apache.kafka" % "kafka-clients" % "3.7.0",
     libraryDependencies += "org.apache.kafka" % "kafka-streams" % "3.7.0",

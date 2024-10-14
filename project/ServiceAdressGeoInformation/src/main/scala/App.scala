@@ -1,13 +1,12 @@
 
-//import code.DataRepository
 import code.DataRepository.DataService
+import code.model.AppConfig
+//import code.model.AppConfig
 import code.restService.{RestServer, RestServerLive}
 //import com.zaxxer.hikari.HikariDataSource
 import io.getquill.context.ZioJdbc
 import io.getquill.{CompositeNamingStrategy2, Escape, JdbcContextConfig, Literal, NamingStrategy, PostgresEscape, PostgresZioJdbcContext, SnakeCase, SqlMirrorContext}
 import io.getquill.jdbczio.Quill
-//import io.getquill.jdbczio.Quill._
-//import io.getquill.util.LoadConfig
 import zio.{ULayer, ZLayer, durationInt}
 import zio.http._
 import zio.http.endpoint._
@@ -38,7 +37,7 @@ object App {
 
 
   val appEnvironment
-  = db.zioDS >+> DataService.live >+> RestServerLive.live  >+> Server.defaultWith(_.port(8081).enableRequestStreaming) ++
+  = AppConfig.live >>> db.zioDS >+> DataService.live >+> RestServerLive.live  >+> Server.defaultWith(_.port(8081).enableRequestStreaming) ++
   metricsConfig >+> prometheus.publisherLayer >+> prometheus.prometheusLayer
   val httpApp = AddressGeoInformationAPI.AddressGeoInformationAPI.api
 

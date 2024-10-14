@@ -1,3 +1,4 @@
+import code.model.AppConfig
 import zio._
 import zio.config.typesafe.FromConfigSourceTypesafe
 import zio.logging.backend.SLF4J

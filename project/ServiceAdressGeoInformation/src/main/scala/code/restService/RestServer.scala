@@ -50,7 +50,7 @@ import zio.http._
     def adressgeoinformation =
       ZIO.serviceWithZIO[RestServerLive](_.adressgeoinformation)
 
-   val live: ZLayer[DataService, Nothing, RestServerLive] = ZLayer {
+   val live: ZLayer[DataService, Nothing, RestServerLive] = ZLayer.scoped {
       for {
             _ <- ZIO.logInfo("DataService operation")
             rest <- ZIO.service[DataService]

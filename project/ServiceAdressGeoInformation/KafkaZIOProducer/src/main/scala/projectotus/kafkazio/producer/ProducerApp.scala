@@ -19,6 +19,7 @@ object ProducerApp extends ZIOAppDefault {
       topic <- ZIO.config(AppConfigProducer.config.map(_.topic))
       filecsv <- ZIO.config(AppConfigProducer.config.map(_.filecsv))
       workingDir <- ZIO.succeed(Paths.get(".").toAbsolutePath.toString.replace(".", ""))
+      dataTransform <- ZIO.service[DataTransformation.Service]
       _ <- ZStream.fromIteratorScoped {
           ZIO.fromAutoCloseable(
               ZIO.attemptBlocking(
@@ -26,7 +27,7 @@ object ProducerApp extends ZIOAppDefault {
               )
             ).map(_.getLines)
             .flatMap(tr => ZIO.logInfo("Parse lines...") *>
-              DataTransformation.EventGenerator.parserTransactionRaw(tr))
+              dataTransform.parserTransactionRaw(tr))
             .logError("parse error")
             .mapError(e => new Throwable(e.getMessage.toString))
         }
